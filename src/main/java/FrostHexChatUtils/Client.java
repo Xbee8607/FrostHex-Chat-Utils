@@ -19,44 +19,58 @@ public class Client implements ClientModInitializer {
         // Listen for incoming chat messages
         ClientReceiveMessageEvents.ALLOW_CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> {
             String rawMessage = message.getString();
-            String newMessage = "";
+            String newMessage;
 
-            /// JOIN SERVER ///
-
-            Matcher Join_Pattern_Match = JOIN_PATTERN.matcher(rawMessage);
-
-            // Finds a player joined message //
-            if(Join_Pattern_Match.find()){
-                // Remove player count
-                newMessage = rawMessage.replaceAll("\\[\\d+/\\d+]","");
-
-                // Remove heat driver
-                if(rawMessage.contains("[Heat Driver]")){
-                    newMessage = rawMessage.replace("[Heat Driver]","");
-                }
-                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(newMessage));
+           /// Join Messages ///
+            if(joinServerChat(rawMessage)){
                 return false;
             }
 
-            /// RACE VOTING ///
+            /// Race Voting ///
+            if(raceVotingChat(rawMessage)){
+                return false;
+            }
+            return true;
 
-            // Finds a race voting message //
-            if(rawMessage.contains(" just voted for a race on")){
 
-                // Remove filler text
-                rawMessage = rawMessage.replace(" just voted for a race on", " :");
 
-                // Make ':' appear the same colour as rest of text
+        });
+    }
+    private boolean joinServerChat(String rawMessage){
+        Matcher joinPatternMatch = JOIN_PATTERN.matcher(rawMessage);
+
+        if (joinPatternMatch.find()) {
+            String newMessage = rawMessage.replaceAll("\\[\\d+/\\d+]", "");
+
+            if (rawMessage.contains("[Heat Driver]")) {
+                newMessage = newMessage.replace("[Heat Driver]", "");
+            }
+
+            MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(newMessage));
+            return true;
+        }
+        return false;
+    }
+
+    private boolean raceVotingChat(String rawMessage){
+        if (rawMessage.contains(" just voted for a race on")){
+
+            // Remove filler text
+            rawMessage = rawMessage.replace(" just voted for a race on", " :");
+
+            // Make ':' appear the same colour as rest of text
+            try{
                 String[] Message = rawMessage.split(" ", 4);
                 Text textMessage = Text.literal(Message[1])                                                 // Player Name
                         .append(Text.literal(Message[2]).setStyle(Style.EMPTY.withColor(0x7FB8FF))) // Colon
                         .append(' ' + Message[3]);                                                          // Rest of Text
 
                 MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
+                return true;
+            } catch (Exception ArrayIndexOutOfBoundsException){
                 return false;
             }
-            return true;
-
-        });
+        }
+        return false;
     }
 }

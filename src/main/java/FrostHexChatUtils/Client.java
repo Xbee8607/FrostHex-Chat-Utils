@@ -20,19 +20,11 @@ public class Client implements ClientModInitializer {
         ClientReceiveMessageEvents.ALLOW_CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> {
             String rawMessage = message.getString();
 
-           /// Join Messages ///
-            if(joinServerChat(rawMessage)){
-                return false;
-            }
-
-            /// Race Voting ///
-            if(raceVotingChat(rawMessage)){
+            /// Join Messages and Vote Messages ///
+            if(joinServerChat(rawMessage) || raceVotingChat(rawMessage)){
                 return false;
             }
             return true;
-
-
-
         });
     }
     private boolean joinServerChat(String rawMessage){

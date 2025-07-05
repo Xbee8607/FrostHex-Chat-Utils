@@ -2,7 +2,6 @@ package FrostHexChatUtils;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.SpriteTexturedVertexConsumer;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;

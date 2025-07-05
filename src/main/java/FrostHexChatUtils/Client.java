@@ -19,7 +19,6 @@ public class Client implements ClientModInitializer {
         // Listen for incoming chat messages
         ClientReceiveMessageEvents.ALLOW_CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> {
             String rawMessage = message.getString();
-            String newMessage;
 
            /// Join Messages ///
             if(joinServerChat(rawMessage)){

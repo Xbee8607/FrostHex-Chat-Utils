@@ -16,23 +16,27 @@ public class Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Listen for incoming chat messages
+        // Listen for incoming chat messages //
         ClientReceiveMessageEvents.ALLOW_CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> {
             String rawMessage = message.getString();
 
             /// Join Messages and Vote Messages ///
-            if(joinServerChat(rawMessage) || raceVotingChat(rawMessage)){
+            if(joinServerChat(rawMessage)){
+                return false;
+            } else if (raceVotingChat(rawMessage)) {
                 return false;
             }
             return true;
         });
     }
+
     private boolean joinServerChat(String rawMessage){
         Matcher joinPatternMatch = JOIN_PATTERN.matcher(rawMessage);
-
+        // For player count //
         if (joinPatternMatch.find()) {
             String newMessage = rawMessage.replaceAll("\\[\\d+/\\d+]", "");
 
+            // If player was in race //
             if (rawMessage.contains("[Heat Driver]")) {
                 newMessage = newMessage.replace("[Heat Driver]", "");
             }
@@ -58,6 +62,7 @@ public class Client implements ClientModInitializer {
 
                 MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
                 return true;
+
             } catch (Exception ArrayIndexOutOfBoundsException){
                 return false;
             }

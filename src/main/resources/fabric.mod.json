@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "frosthex-chat-utils",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"name": "FrostHex Chat Utils",
 	"description": "Cleans up FrostHex chat",
 	"authors": [

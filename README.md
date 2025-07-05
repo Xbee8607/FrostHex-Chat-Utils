@@ -1,3 +1,3 @@
-WIP: Frosthex Chat Utils! (more stuff coming soon here)
+WIP: Frosthex Chat Utils! (more stuff coming soon here) 
 
 

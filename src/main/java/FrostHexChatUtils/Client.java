@@ -17,6 +17,8 @@ public class Client implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        ///  Colours ///
         int lightBlueColour = 0x80c3fc;
         int darkBlueColour = 0x527bd8;
         int grayColour = 0x545454;

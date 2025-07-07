@@ -24,6 +24,8 @@ public class JoinGame {
 
             /// Colour in text ///
 
+
+            /// /// MAKE THIS FASTER /// ///
             try{
                 String[] joinServerArray = newMessage.split(" ", 2);
                 String joinServerSymbol = joinServerArray[0];

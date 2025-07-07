@@ -45,7 +45,6 @@ public class RaceGame {
 
     private static String raceConditions(String rawMessage){
         // formatted as (player) : (track) : (laps) : (pits) //
-        // Split Player and Race with rest of command //
         try {
             String[] Message = rawMessage.split(" with", 2);
 

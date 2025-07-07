@@ -25,6 +25,8 @@ public class JoinGame {
             /// Colour in text ///
 
             String[] joinServerArray = newMessage.split(" ", 2);
+
+            // [+] Player //
             if(newMessage.contains("+")){
                 Text textMessage = Text.literal("[").setStyle(Style.EMPTY.withColor(gray))
                         .append(Text.literal("+").setStyle(Style.EMPTY.withColor(green)))
@@ -33,6 +35,7 @@ public class JoinGame {
                 MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
                 return true;
             }
+            // [-] Player //
             else{
                 Text textMessage = Text.literal("[").setStyle(Style.EMPTY.withColor(gray))
                         .append(Text.literal("-").setStyle(Style.EMPTY.withColor(red)))

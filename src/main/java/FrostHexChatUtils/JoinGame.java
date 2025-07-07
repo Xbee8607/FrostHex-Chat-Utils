@@ -24,43 +24,22 @@ public class JoinGame {
 
             /// Colour in text ///
 
-
-            /// /// MAKE THIS FASTER /// ///
-            try{
-                String[] joinServerArray = newMessage.split(" ", 2);
-                String joinServerSymbol = joinServerArray[0];
-
-                // Someone joins Server //
-                if(rawMessage.contains("+")) {
-
-                    String[] joinServerSymbolArray = joinServerSymbol.split("\\+", 2);
-                    Text textMessage = Text.literal((joinServerSymbolArray[0])).setStyle(Style.EMPTY.withColor(gray))
-                            .append(Text.literal("+").setStyle(Style.EMPTY.withColor(green)))
-                            .append(Text.literal(joinServerSymbolArray[1]).setStyle(Style.EMPTY.withColor(gray)))
-                            .append(Text.literal(" " + joinServerArray[1]).setStyle(Style.EMPTY.withColor(yellow)));
-                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
-                    return true;
-                }
-
-                // Someone leaves server //
-                else if(rawMessage.contains("-")){
-                    String[] joinServerSymbolArray = joinServerSymbol.split("-", 2);
-                    Text textMessage = Text.literal((joinServerSymbolArray[0])).setStyle(Style.EMPTY.withColor(gray))
-                            .append(Text.literal("-").setStyle(Style.EMPTY.withColor(red)))
-                            .append(Text.literal(joinServerSymbolArray[1]).setStyle(Style.EMPTY.withColor(gray)))
-                            .append(Text.literal(" " + joinServerArray[1]).setStyle(Style.EMPTY.withColor(yellow)));
-                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
-                    return true;
-                    }
-
-                // Someone said [int/int] //
-                else{
-                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("Cannot find '+' or '-'"));
-                    return false;
-                }
-            } catch (Exception ArrayIndexOutOfBoundsException){
-                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("Array Index out of bounds"));
-                return false;
+            String[] joinServerArray = newMessage.split(" ", 2);
+            if(newMessage.contains("+")){
+                Text textMessage = Text.literal("[").setStyle(Style.EMPTY.withColor(gray))
+                        .append(Text.literal("+").setStyle(Style.EMPTY.withColor(green)))
+                        .append(Text.literal("] ").setStyle(Style.EMPTY.withColor(gray)))
+                        .append(Text.literal(joinServerArray[1]).setStyle(Style.EMPTY.withColor(yellow)));
+                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
+                return true;
+            }
+            else{
+                Text textMessage = Text.literal("[").setStyle(Style.EMPTY.withColor(gray))
+                        .append(Text.literal("-").setStyle(Style.EMPTY.withColor(red)))
+                        .append(Text.literal("] ").setStyle(Style.EMPTY.withColor(gray)))
+                        .append(Text.literal(joinServerArray[1]).setStyle(Style.EMPTY.withColor(yellow)));
+                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
+                return true;
             }
         }
         return false;

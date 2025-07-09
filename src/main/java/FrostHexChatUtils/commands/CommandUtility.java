@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Utility {
+public class CommandUtility {
 
     public static final List<String> friendList = new ArrayList<>();
     private static final Path FRIENDS_FILE = Path.of("config/friendlist.json");

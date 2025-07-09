@@ -3,7 +3,7 @@ package FrostHexChatUtils.normalchat;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
-public class Utility {
+public class NormalChatUtility {
     public static String raceConditions(String rawMessage){
         // formatted as (player) : (track) : (laps) : (pits) //
         try {

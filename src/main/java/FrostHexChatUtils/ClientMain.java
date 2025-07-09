@@ -7,13 +7,11 @@ import FrostHexChatUtils.commands.FriendRemoveCommand;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Client implements ClientModInitializer {
+public class ClientMain implements ClientModInitializer {
 
     private static final Pattern letterFound = Pattern.compile("[a-zA-Z0-9]");
 

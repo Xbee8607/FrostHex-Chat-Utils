@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "frosthex-chat-utils",
-	"version": "0.3.2",
+	"version": "0.4.2",
 	"name": "FrostHex Chat Utils",
 	"description": "Cleans up FrostHex chat",
 	"authors": [
@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"FrostHexChatUtils.Client"
+			"FrostHexChatUtils.ClientMain"
 		]
 	},
 	"mixins": [

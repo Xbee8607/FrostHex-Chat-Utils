@@ -10,19 +10,19 @@ import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.*;
 public class FriendAddCommand {
 
     public static void addFriend(CommandDispatcher<FabricClientCommandSource> dispatcher) {
-        Utility.loadFriends(); // Load friends when registering the command
+        CommandUtility.loadFriends(); // Load friends when registering the command
 
         dispatcher.register(literal("FHCU")
                 .then(literal("friend")
                         .then(literal("add")
                             .then(argument("player", StringArgumentType.word())
-                                .suggests(Utility.PLAYER_SUGGESTIONS_ONLINE)
+                                .suggests(CommandUtility.PLAYER_SUGGESTIONS_ONLINE)
                                 .executes(context -> {
                                     String playerName = StringArgumentType.getString(context, "player");
 
-                                    if (!Utility.friendList.contains(playerName)) {
-                                        Utility.friendList.add(playerName);
-                                        Utility.saveFriends(); // Save to file
+                                    if (!CommandUtility.friendList.contains(playerName)) {
+                                        CommandUtility.friendList.add(playerName);
+                                        CommandUtility.saveFriends(); // Save to file
                                         MinecraftClient.getInstance().inGameHud.getChatHud()
                                                 .addMessage(Text.literal("Friend added: " + playerName));
                                     } else {

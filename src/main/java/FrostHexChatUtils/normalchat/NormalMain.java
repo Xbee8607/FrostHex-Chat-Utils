@@ -67,7 +67,7 @@ public class NormalMain {
             // Remove filler text
             rawMessage = rawMessage.replace(" just voted for a race on", "");
 
-            String[] conditionsArray = Utility.raceConditions(rawMessage).split(":", 4);
+            String[] conditionsArray = NormalChatUtility.raceConditions(rawMessage).split(":", 4);
 
             String voteraceCommand = "/voterace " + conditionsArray[1] + " " + conditionsArray[2] + " " + conditionsArray[3];
 

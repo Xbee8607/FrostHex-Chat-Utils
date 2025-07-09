@@ -18,11 +18,11 @@ public class FriendRemoveCommand {
                 .then(literal("friend")
                         .then(literal("remove")
                                 .then(argument("player", StringArgumentType.word())
-                                        .suggests(Utility.PLAYER_SUGGESTIONS_ONLINE)
+                                        .suggests(CommandUtility.PLAYER_SUGGESTIONS_ONLINE)
                                         .executes(context -> {
                                             String playerNameRemove = StringArgumentType.getString(context, "player");
-                                            Iterator<String> iterator = Utility.getFriendList().iterator();
-                                            if(Utility.getFriendList().isEmpty()){
+                                            Iterator<String> iterator = CommandUtility.getFriendList().iterator();
+                                            if(CommandUtility.getFriendList().isEmpty()){
                                                 MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("No friend to remove"));
                                             } else{
                                                 while (iterator.hasNext()) {

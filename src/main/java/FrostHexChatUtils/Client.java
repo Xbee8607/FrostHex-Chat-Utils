@@ -1,6 +1,9 @@
 package FrostHexChatUtils;
+import FrostHexChatUtils.commands.RaceModeCommand;
 
+import FrostHexChatUtils.normalchat.NormalMain;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
@@ -10,12 +13,10 @@ import java.util.regex.Pattern;
 
 public class Client implements ClientModInitializer {
 
-    private static final Pattern letterFound = Pattern.compile("[a-zA-Z]");
+    private static final Pattern letterFound = Pattern.compile("[a-zA-Z0-9]");
 
     @Override
     public void onInitializeClient() {
-
-
 
         ///  Colours ///
         int lightBlueColour = 0x80c3fc;
@@ -29,45 +30,51 @@ public class Client implements ClientModInitializer {
         int yellowColour = 0xfbfb54;
         int orangeColour = 0xfba800;
 
+        // RaceMode Command //
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            RaceModeCommand.Activate(dispatcher);});
 
         // Listen for incoming chat messages //
         ClientReceiveMessageEvents.ALLOW_GAME.register((message, sender) -> {
-            
             String rawMessage = message.getString();
             Matcher checkBlankMessage = letterFound.matcher(rawMessage);
 
-            /// Someone Chats ///
-            if(rawMessage.contains("»")){
+            // Blank Line //
+            if(!checkBlankMessage.find()){
+                return false;
+            }
+
+            /// Race Mode Enabled//
+
+            if(RaceModeCommand.raceModeNumber){
+
+                /// WIP ///
                 return true;
             }
 
-            /// Join Messages, Race Messages and Blank Messages ///
-            if(JoinGame.joinServerChat(rawMessage, grayColour, greenColour, redColour, yellowColour)){
-                return false;
-            }
-            else if(!checkBlankMessage.find()){
-                return false;
-            }
-            else if(RaceGame.raceVotingChat(rawMessage, lightBlueColour, darkBlueColour, cyanColour)){
-                return false;
-            }
-            else if(RaceGame.raceFinishChat(rawMessage, orangeColour)){
-                return false;
-            }
+            /// Race Mode Disabled ///
 
-            /// Someone Whispers ///
-            if(rawMessage.contains("whispers to you")){
-                return true;
-            }
-
-            /// FrostHex Utils Messages ///
-            else if(rawMessage.contains("[FrostHexUtils]")){
-                if(FrostHexUtils.boatUtilsMessage(rawMessage, grayColour, cyanColour, orangeColour)){
+            else {
+                if(rawMessage.contains("»")){
+                    return true;
+                }
+                else if(NormalMain.joinServerChat(rawMessage, grayColour, greenColour, redColour, yellowColour)){
+                    return false;
+                }
+                else if(NormalMain.raceVotingChat(rawMessage, lightBlueColour, darkBlueColour, cyanColour)){
+                    return false;
+                }
+                else if(NormalMain.raceFinishChat(rawMessage, orangeColour)){
+                    return false;
+                }
+                else if(rawMessage.contains("whispers to you")){
+                    return true;
+                }
+                else if(NormalMain.boatUtilsMessage(rawMessage, grayColour, cyanColour, orangeColour)){
                     return false;
                 }
                 return true;
             }
-            return true;
         });
     }
 }

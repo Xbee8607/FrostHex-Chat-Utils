@@ -11,7 +11,6 @@ public class FriendAddCommand {
 
     public static void addFriend(CommandDispatcher<FabricClientCommandSource> dispatcher) {
         CommandUtility.loadFriends(); // Load friends when registering the command
-
         dispatcher.register(literal("FHCU")
                 .then(literal("friend")
                         .then(literal("add")

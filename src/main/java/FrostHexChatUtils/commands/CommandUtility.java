@@ -47,6 +47,7 @@ public class CommandUtility {
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("File could not be saves"));
         }
     }
+
     public static List<String> getFriendList() {
         return friendList;
     }

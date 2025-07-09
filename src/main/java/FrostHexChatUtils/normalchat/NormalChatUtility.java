@@ -8,7 +8,6 @@ public class NormalChatUtility {
         // formatted as (player) : (track) : (laps) : (pits) //
         try {
             String[] Message = rawMessage.split(" with", 2);
-
             String endMessage = Message[1];
             String[] endMessageArray = endMessage.split(" ", 5);
 

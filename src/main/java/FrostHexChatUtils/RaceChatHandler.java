@@ -19,7 +19,7 @@ public class RaceChatHandler {
         else if(RaceMain.showRaceJoinMessages(rawMessage)){
             return true;
         }
-        // I do not know if this works //
+        // I do not know if this works yet //
         else if(RaceMain.showMessagesWithPlayerName(rawMessage)){
             return true;
         }

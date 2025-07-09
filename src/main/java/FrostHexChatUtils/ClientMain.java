@@ -48,7 +48,7 @@ public class ClientMain implements ClientModInitializer {
             /// Race Mode Enabled//
             if(RaceModeCommand.raceModeNumber){
 
-                /// WIP ///
+                /// WIP (kinda) ///
                 if(RaceChatHandler.show(rawMessage)){
                     return true;
                 }

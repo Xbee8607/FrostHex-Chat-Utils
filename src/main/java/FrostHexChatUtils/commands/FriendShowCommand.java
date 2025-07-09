@@ -20,5 +20,4 @@ public class FriendShowCommand {
                                             return 1;
                                         }))));
     }
-
 }

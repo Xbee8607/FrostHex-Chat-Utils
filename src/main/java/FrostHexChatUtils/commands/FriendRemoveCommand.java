@@ -35,7 +35,6 @@ public class FriendRemoveCommand {
                                                 return 1;
                                             }
 
-
                                             return 1;
                                         })))));
     }

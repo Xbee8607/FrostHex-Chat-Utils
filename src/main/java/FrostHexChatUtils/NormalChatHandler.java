@@ -2,7 +2,7 @@ package FrostHexChatUtils;
 import FrostHexChatUtils.normalchat.NormalMain;
 
 public class NormalChatHandler {
-    ///  Colours ///
+    //  Colours //
     static final int lightBlueColour = 0x80c3fc;
     static final int darkBlueColour = 0x527bd8;
     static final int cyanColour = 0x54fbfc;

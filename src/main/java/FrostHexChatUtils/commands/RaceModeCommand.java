@@ -12,22 +12,22 @@ public class RaceModeCommand {
 
     public static void Activate(CommandDispatcher<FabricClientCommandSource> dispatcher){
         dispatcher.register(
-                literal("racemode")
-                        .executes(context -> {
-                            // Turn off race mode //
-                            if(raceModeNumber){
-                                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("RaceMode disabled!"));
-                                raceModeNumber = false;
-                                return 1;
-                            }
-                            // Turn on race mode //
-                            else{
-                                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("RaceMode enabled!"));
-                                raceModeNumber = true;
-                                return 1;
-                            }
-                        })
-        );
+                literal("FHCU")
+                        .then(literal("racemode")
+                                .executes(context -> {
+                                // Turn off race mode //
+                                if(raceModeNumber){
+                                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("RaceMode disabled!"));
+                                    raceModeNumber = false;
+                                    return 1;
+                                }
+                                // Turn on race mode //
+                                else{
+                                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("RaceMode enabled!"));
+                                    raceModeNumber = true;
+                                    return 1;
+                                }
+                        })));
     }
 
 }

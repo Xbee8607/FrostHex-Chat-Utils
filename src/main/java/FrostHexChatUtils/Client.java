@@ -1,7 +1,11 @@
 package FrostHexChatUtils;
 import FrostHexChatUtils.commands.RaceModeCommand;
+import FrostHexChatUtils.commands.FriendAddCommand;
+import FrostHexChatUtils.commands.FriendShowCommand;
+import FrostHexChatUtils.commands.FriendRemoveCommand;
 
 import FrostHexChatUtils.normalchat.NormalMain;
+import FrostHexChatUtils.racechat.RaceMain;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
@@ -30,9 +34,22 @@ public class Client implements ClientModInitializer {
         int yellowColour = 0xfbfb54;
         int orangeColour = 0xfba800;
 
-        // RaceMode Command //
+        /// RaceMode Command ///
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             RaceModeCommand.Activate(dispatcher);});
+
+        /// AddFriend Command ///
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+                FriendAddCommand.addFriend(dispatcher));
+
+        /// ShowFriend Command ///
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+                FriendRemoveCommand.friendRemove(dispatcher));
+
+        /// ShowFriend Command ///
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+                FriendShowCommand.friendShow(dispatcher));
+
 
         // Listen for incoming chat messages //
         ClientReceiveMessageEvents.ALLOW_GAME.register((message, sender) -> {
@@ -45,11 +62,15 @@ public class Client implements ClientModInitializer {
             }
 
             /// Race Mode Enabled//
-
             if(RaceModeCommand.raceModeNumber){
 
                 /// WIP ///
-                return true;
+                // Friend Messages //
+                if(RaceMain.showMessgagesVerification(rawMessage)){
+                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("Friend Message Shown"));
+                    return true;
+                }
+                return false;
             }
 
             /// Race Mode Disabled ///

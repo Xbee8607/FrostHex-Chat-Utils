@@ -4,8 +4,6 @@ import FrostHexChatUtils.commands.FriendAddCommand;
 import FrostHexChatUtils.commands.FriendShowCommand;
 import FrostHexChatUtils.commands.FriendRemoveCommand;
 
-import FrostHexChatUtils.normalchat.NormalMain;
-import FrostHexChatUtils.racechat.RaceMain;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
@@ -22,18 +20,6 @@ public class Client implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        ///  Colours ///
-        int lightBlueColour = 0x80c3fc;
-        int darkBlueColour = 0x527bd8;
-        int cyanColour = 0x54fbfc;
-
-        int grayColour = 0x545454;
-        int greenColour = 0x54fb54;
-
-        int redColour = 0xfb5454;
-        int yellowColour = 0xfbfb54;
-        int orangeColour = 0xfba800;
-
         /// RaceMode Command ///
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             RaceModeCommand.Activate(dispatcher);});
@@ -42,7 +28,7 @@ public class Client implements ClientModInitializer {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
                 FriendAddCommand.addFriend(dispatcher));
 
-        /// ShowFriend Command ///
+        /// RemoveFriend Command ///
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
                 FriendRemoveCommand.friendRemove(dispatcher));
 
@@ -65,33 +51,15 @@ public class Client implements ClientModInitializer {
             if(RaceModeCommand.raceModeNumber){
 
                 /// WIP ///
-                // Friend Messages //
-                if(RaceMain.showMessgagesVerification(rawMessage)){
-                    MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("Friend Message Shown"));
+                if(RaceChatHandler.show(rawMessage)){
                     return true;
                 }
                 return false;
             }
 
             /// Race Mode Disabled ///
-
             else {
-                if(rawMessage.contains("»")){
-                    return true;
-                }
-                else if(NormalMain.joinServerChat(rawMessage, grayColour, greenColour, redColour, yellowColour)){
-                    return false;
-                }
-                else if(NormalMain.raceVotingChat(rawMessage, lightBlueColour, darkBlueColour, cyanColour)){
-                    return false;
-                }
-                else if(NormalMain.raceFinishChat(rawMessage, orangeColour)){
-                    return false;
-                }
-                else if(rawMessage.contains("whispers to you")){
-                    return true;
-                }
-                else if(NormalMain.boatUtilsMessage(rawMessage, grayColour, cyanColour, orangeColour)){
+                if(!NormalChatHandler.show(rawMessage)){
                     return false;
                 }
                 return true;

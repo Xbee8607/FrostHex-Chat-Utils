@@ -1,16 +1,12 @@
 package FrostHexChatUtils.racechat;
-import FrostHexChatUtils.commands.FriendAddCommand;
-
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
+import FrostHexChatUtils.commands.Utility;
 
 public class RaceMain {
-    public static boolean showMessgagesVerification(String rawMessage){
+    public static boolean showFriendMessgages(String rawMessage){
         String[] rawMessageArray = rawMessage.split(" ", 2);
         // Player is rawMessageArray[0] //
-        for(String player : FriendAddCommand.getFriendList())
+        for(String player : Utility.getFriendList())
             if (player.equals(rawMessageArray[0])){
-
                 return true;
             }
         return false;

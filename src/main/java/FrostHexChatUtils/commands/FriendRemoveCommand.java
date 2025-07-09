@@ -18,11 +18,11 @@ public class FriendRemoveCommand {
                 .then(literal("friend")
                         .then(literal("remove")
                                 .then(argument("player", StringArgumentType.word())
-                                        .suggests(FriendAddCommand.PLAYER_SUGGESTIONS)
+                                        .suggests(Utility.PLAYER_SUGGESTIONS_ONLINE)
                                         .executes(context -> {
                                             String playerNameRemove = StringArgumentType.getString(context, "player");
-                                            Iterator<String> iterator = FriendAddCommand.getFriendList().iterator();
-                                            if(FriendAddCommand.getFriendList().isEmpty()){
+                                            Iterator<String> iterator = Utility.getFriendList().iterator();
+                                            if(Utility.getFriendList().isEmpty()){
                                                 MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("No friend to remove"));
                                             } else{
                                                 while (iterator.hasNext()) {
@@ -31,7 +31,7 @@ public class FriendRemoveCommand {
                                                         iterator.remove();
                                                     }
                                                 }
-                                                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(playerNameRemove + "has been removed!"));
+                                                MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(playerNameRemove + " has been removed!"));
                                                 return 1;
                                             }
 

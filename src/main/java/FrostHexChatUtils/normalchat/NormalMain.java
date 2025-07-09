@@ -1,6 +1,5 @@
 package FrostHexChatUtils.normalchat;
 
-import jdk.jshell.execution.Util;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Style;
@@ -25,7 +24,7 @@ public class NormalMain {
     }
     private static final Pattern JOIN_PATTERN = Pattern.compile("\\[\\d+/\\d+]");
 
-    public static boolean joinServerChat(String rawMessage, int gray, int green, int red, int yellow){
+    public static boolean joinServerMessage(String rawMessage, int gray, int green, int red, int yellow){
         Matcher joinPatternMatch = JOIN_PATTERN.matcher(rawMessage);
 
         // For player count //
@@ -62,7 +61,7 @@ public class NormalMain {
         }
         return false;
     }
-    public static boolean raceVotingChat(String rawMessage, int lightBlue, int darkBlue, int cyan){
+    public static boolean raceVotingMessage(String rawMessage, int lightBlue, int darkBlue, int cyan){
         if (rawMessage.contains(" just voted for a race on")){
 
             // Remove filler text
@@ -89,7 +88,7 @@ public class NormalMain {
         return false;
     }
 
-    public static boolean raceFinishChat(String rawMessage, int orange){
+    public static boolean raceFinishMessage(String rawMessage, int orange){
         if(rawMessage.contains("The first driver has")){
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("Race Ending in 120 Seconds")
                     .setStyle(Style.EMPTY.withColor(orange)));

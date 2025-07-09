@@ -15,7 +15,7 @@ public class FriendShowCommand {
                                 .then(literal("list")
                                         .executes(context -> {
                                             MinecraftClient.getInstance().inGameHud.getChatHud()
-                                                    .addMessage(Text.literal(FriendAddCommand.getFriendList().toString())
+                                                    .addMessage(Text.literal(Utility.getFriendList().toString())
                                             );
                                             return 1;
                                         }))));

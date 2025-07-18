@@ -19,15 +19,21 @@ public class RaceModeCommand {
                                 if(raceModeNumber){
                                     MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("RaceMode disabled!"));
                                     raceModeNumber = false;
-                                    return 1;
+                                    if(MinecraftClient.getInstance().player != null){
+                                        MinecraftClient.getInstance().player.experienceProgress = 0.0f;
+                                    }
+
                                 }
                                 // Turn on race mode //
                                 else{
                                     MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("RaceMode enabled!"));
                                     raceModeNumber = true;
-                                    return 1;
+                                    if(MinecraftClient.getInstance().player != null){
+                                        MinecraftClient.getInstance().player.experienceProgress = 1.0f;
+                                    }
                                 }
-                        })));
+                                    return 1;
+                                })));
     }
 
 }

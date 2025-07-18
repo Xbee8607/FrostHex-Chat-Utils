@@ -14,24 +14,27 @@ public class NormalChatHandler {
     static final int yellowColour = 0xfbfb54;
     static final int orangeColour = 0xfba800;
 
-    public static boolean show(String rawMessage) {if(rawMessage.contains("»")){
+    public static boolean show(String rawMessage) {
+        if(rawMessage.contains("»")){
+        return true;
+        }
+        else if(NormalMain.joinServerMessage(rawMessage, grayColour, greenColour, redColour, yellowColour)){
+            return false;
+        }
+        else if(NormalMain.raceVotingMessage(rawMessage, lightBlueColour, darkBlueColour, cyanColour)){
+            return false;
+        }
+        else if(NormalMain.raceFinishMessage(rawMessage, orangeColour)){
+            return false;
+        }
+        else if(rawMessage.contains("whispers to you")){
+            return true;
+        }
+        else if(NormalMain.boatUtilsMessage(rawMessage, grayColour, cyanColour, orangeColour)){
+            return false;
+        }
         return true;
     }
-    else if(NormalMain.joinServerMessage(rawMessage, grayColour, greenColour, redColour, yellowColour)){
-        return false;
-    }
-    else if(NormalMain.raceVotingMessage(rawMessage, lightBlueColour, darkBlueColour, cyanColour)){
-        return false;
-    }
-    else if(NormalMain.raceFinishMessage(rawMessage, orangeColour)){
-        return false;
-    }
-    else if(rawMessage.contains("whispers to you")){
-        return true;
-    }
-    else if(NormalMain.boatUtilsMessage(rawMessage, grayColour, cyanColour, orangeColour)){
-        return false;
-    }
-        return true;}
+
 
 }

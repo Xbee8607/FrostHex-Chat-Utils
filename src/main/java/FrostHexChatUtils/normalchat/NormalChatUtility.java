@@ -8,12 +8,10 @@ public class NormalChatUtility {
         // formatted as (player) : (track) : (laps) : (pits) //
         try {
             String[] Message = rawMessage.split(" with", 2);
-            String endMessage = Message[1];
-            String[] endMessageArray = endMessage.split(" ", 5);
+            String[] endMessageArray = Message[1].split(" ", 5);
 
             //splits Player and Race
-            String startMessage = Message[0];
-            String[] startMessageArray = startMessage.split(" ", 2);
+            String[] startMessageArray = Message[0].split(" ", 2);
 
             return startMessageArray[0] + ":" + startMessageArray[1] + ":" + endMessageArray[1] + ":" + endMessageArray[3];
         }catch(Exception ArrayIndexOutOfBoundsException){

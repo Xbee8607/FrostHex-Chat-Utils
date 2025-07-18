@@ -9,18 +9,18 @@ public class RaceChatHandler {
     static final int darkBlueColour = 0x527bd8;
     static final int redColour = 0xfb5454;
 
-    public static boolean show(String rawMessage){
+    public static boolean show(String rawMessage, String playerName){
+
         if(RaceMain.showFriendMessgages(rawMessage)){
             return true;
         }
         else if(RaceMain.showRaceVotingMessages(rawMessage, redColour, lightBlueColour, darkBlueColour)){
-            return true;
+            return false;
         }
         else if(RaceMain.showRaceJoinMessages(rawMessage)){
             return true;
         }
-        // I do not know if this works yet //
-        else if(RaceMain.showMessagesWithPlayerName(rawMessage)){
+        else if(RaceMain.showMessagesWithPlayerName(rawMessage, playerName)){
             return true;
         }
         return false;

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandUtility {
-
     public static final List<String> friendList = new ArrayList<>();
     private static final Path FRIENDS_FILE = Path.of("config/friendlist.json");
     private static final Gson GSON = new Gson();

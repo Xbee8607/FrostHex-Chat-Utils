@@ -7,6 +7,7 @@ import FrostHexChatUtils.commands.FriendRemoveCommand;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
+import net.minecraft.client.MinecraftClient;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +21,8 @@ public class ClientMain implements ClientModInitializer {
 
         /// RaceMode Command ///
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            RaceModeCommand.Activate(dispatcher);});
+            RaceModeCommand.Activate(dispatcher);
+        });
 
         /// AddFriend Command ///
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
@@ -35,32 +37,27 @@ public class ClientMain implements ClientModInitializer {
                 FriendShowCommand.friendShow(dispatcher));
 
 
+
         // Listen for incoming chat messages //
         ClientReceiveMessageEvents.ALLOW_GAME.register((message, sender) -> {
             String rawMessage = message.getString();
             Matcher checkBlankMessage = letterFound.matcher(rawMessage);
 
-            // Blank Line //
-            if(!checkBlankMessage.find()){
+            if (!checkBlankMessage.find()) {
                 return false;
             }
 
-            /// Race Mode Enabled//
-            if(RaceModeCommand.raceModeNumber){
+            // Only try to get player AFTER the game is running and player exists
+            /// Get Player Username ///
+            if (MinecraftClient.getInstance().player == null) return true; // fallback
+            String playerName = MinecraftClient.getInstance().player.getName().getString();
+            String[] playerArray = playerName.split("\\{", 2);
 
-                /// WIP (kinda) ///
-                if(RaceChatHandler.show(rawMessage)){
-                    return true;
-                }
-                return false;
-            }
-
-            /// Race Mode Disabled ///
-            else {
-                if(!NormalChatHandler.show(rawMessage)){
-                    return false;
-                }
-                return true;
+            // Race mode check
+            if (RaceModeCommand.raceModeNumber) {
+                return RaceChatHandler.show(rawMessage, playerArray.length > 1 ? playerArray[1] : playerName);
+            } else {
+                return NormalChatHandler.show(rawMessage);
             }
         });
     }

@@ -49,10 +49,8 @@ public class RaceMain {
         }
         return false;
     }
-    public static boolean showMessagesWithPlayerName(String rawMessage){
-        // Dont know if this works //
-        assert MinecraftClient.getInstance().player != null;
-        if(rawMessage.contains(MinecraftClient.getInstance().player.toString())){
+    public static boolean showMessagesWithPlayerName(String rawMessage, String playerName){
+        if(rawMessage.contains(playerName)){
             return true;
         }
         return false;

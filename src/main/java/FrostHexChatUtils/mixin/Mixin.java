@@ -1,4 +1,4 @@
-package FrostHexChatUtilsTest.mixin;
+package FrostHexChatUtils.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.MinecraftServer;

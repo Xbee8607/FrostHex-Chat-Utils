@@ -1,0 +1,14 @@
+{
+  "text.autoconfig.frosthexchatutils.title": "FrostHex Chat Utils",
+
+  "text.autoconfig.frosthexchatutils.option.enableMod": "Enable Mod",
+
+  "text.autoconfig.frosthexchatutils.option.entryMessages": "Join Messages",
+  "text.autoconfig.frosthexchatutils.option.entryMessages.@Tooltip": "Enables join messages",
+
+  "text.autoconfig.frosthexchatutils.option.voteRaceMessages": "VoteRace Messages!",
+  "text.autoconfig.frosthexchatutils.option.voteRaceMessages.@Tooltip": "Changes VoteRace text",
+
+  "text.autoconfig.frosthexchatutils.option.frostHexMessages": "FrostHex messages",
+  "text.autoconfig.frosthexchatutils.option.frostHexMessages.@Tooltip": "Changes FrostHex test"
+}

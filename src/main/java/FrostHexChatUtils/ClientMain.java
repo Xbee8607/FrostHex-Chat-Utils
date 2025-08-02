@@ -1,11 +1,11 @@
-package FrostHexChatUtilsTest;
+package FrostHexChatUtils;
 
-import FrostHexChatUtilsTest.config.ModConfigFile;
-import FrostHexChatUtilsTest.config.ModConfigScreen;
-import FrostHexChatUtilsTest.features.EntryMessages;
-import FrostHexChatUtilsTest.features.FriendCommand;
-import FrostHexChatUtilsTest.features.FrostHexMessages;
-import FrostHexChatUtilsTest.features.VoteRaceMessages;
+import FrostHexChatUtils.config.ModConfigFile;
+import FrostHexChatUtils.config.ModConfigScreen;
+import FrostHexChatUtils.features.EntryMessages;
+import FrostHexChatUtils.features.FriendCommand;
+import FrostHexChatUtils.features.FrostHexMessages;
+import FrostHexChatUtils.features.VoteRaceMessages;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;

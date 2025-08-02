@@ -1,4 +1,4 @@
-package FrostHexChatUtilsTest.features;
+package FrostHexChatUtils.features;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Style;

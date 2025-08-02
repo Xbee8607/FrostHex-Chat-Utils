@@ -1,7 +1,7 @@
-package FrostHexChatUtilsTest.features;
+package FrostHexChatUtils.features;
 
-import FrostHexChatUtilsTest.config.ModConfigFile;
-import FrostHexChatUtilsTest.config.ModConfigScreen;
+import FrostHexChatUtils.config.ModConfigFile;
+import FrostHexChatUtils.config.ModConfigScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;

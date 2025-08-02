@@ -12,18 +12,18 @@
 		"sources": "https://github.com/Xbee8607/Frosthex-Chat-Utils"
 	},
 	"license": "MIT",
-	"icon": "assets/frosthexchatutilstest/icon.png",
+	"icon": "assets/frosthexchatutils/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"FrostHexChatUtilsTest.ClientMain"
+			"FrostHexChatUtils.ClientMain"
 		],
 		"modmenu": [
-			"FrostHexChatUtilsTest.config.ModMenuIntegration"
+			"FrostHexChatUtils.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"FrostHexChatUtilsTest.mixins.json"
+		"FrostHexChatUtils.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",

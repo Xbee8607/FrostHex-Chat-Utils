@@ -1,4 +1,4 @@
-package FrostHexChatUtilsTest.config;
+package FrostHexChatUtils.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

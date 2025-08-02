@@ -1,12 +1,8 @@
-package FrostHexChatUtils.commands;
+package FrostHexChatUtilsTest.config;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.text.Text;
 
 import java.io.*;
@@ -16,13 +12,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandUtility {
-
+public class ModConfigFile {
     public static final List<String> friendList = new ArrayList<>();
-    private static final Path FRIENDS_FILE = Path.of("config/friendlist.json");
+    private static final Path FRIENDS_FILE = Path.of("config/fhcuconfig.json");
     private static final Gson GSON = new Gson();
 
-    public static void loadFriends() {
+    public static void load() {
         if (!Files.exists(FRIENDS_FILE)) {
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("File does not exist"));
             return;
@@ -37,7 +32,7 @@ public class CommandUtility {
         }
     }
 
-    public static void saveFriends() {
+    public static void save() {
         try {
             Files.createDirectories(FRIENDS_FILE.getParent());
             try (Writer writer = new FileWriter(FRIENDS_FILE.toFile())) {
@@ -47,17 +42,4 @@ public class CommandUtility {
             MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("File could not be saves"));
         }
     }
-
-    public static List<String> getFriendList() {
-        return friendList;
-    }
-    public static final SuggestionProvider<FabricClientCommandSource> PLAYER_SUGGESTIONS_ONLINE = (context, builder) -> {
-        ClientPlayNetworkHandler handler = MinecraftClient.getInstance().getNetworkHandler();
-        if (handler != null) {
-            for (PlayerListEntry entry : handler.getPlayerList()) {
-                builder.suggest(entry.getProfile().getName());
-            }
-        }
-        return builder.buildFuture();
-    };
 }

@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "frosthex-chat-utils",
+	"id": "frosthex-chat-utils-test",
 	"version": "0.4.2",
-	"name": "FrostHex Chat Utils",
+	"name": "Test",
 	"description": "Cleans up FrostHex chat",
 	"authors": [
 		"Xbee8607!"
@@ -12,23 +12,30 @@
 		"sources": "https://github.com/Xbee8607/Frosthex-Chat-Utils"
 	},
 	"license": "MIT",
-	"icon": "assets/frosthexchatutils/icon.png",
+	"icon": "assets/frosthexchatutilstest/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"FrostHexChatUtils.ClientMain"
+			"FrostHexChatUtilsTest.ClientMain"
+		],
+		"modmenu": [
+			"FrostHexChatUtilsTest.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"FrostHexChatUtils.mixins.json"
+		"FrostHexChatUtilsTest.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.21",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"cloth-config2": "*"
 	},
 	"suggests": {
 		"another-mod": "*"
+	},
+	"custom": {
+		"modmenu:api": true
 	}
 }

@@ -19,4 +19,24 @@ public class ModConfigScreen implements ConfigData {
     @ConfigEntry.Gui.Tooltip()
     public boolean frostHexMessages = true;
 
+
+    public boolean frostHexHelpMessages = false;
+
+    @ConfigEntry.Gui.CollapsibleObject
+    public ChatHelpSettings extraSettings = new ChatHelpSettings();
+
+    public static class ChatHelpSettings {
+        @ConfigEntry.Gui.Tooltip()
+        public boolean voteRaceHelp = false;
+
+        @ConfigEntry.Gui.Tooltip()
+        public boolean raceJoinHelp = false;
+
+        @ConfigEntry.Gui.Tooltip()
+        public boolean trackTimeHelp = false;
+    }
+
 }
+
+
+

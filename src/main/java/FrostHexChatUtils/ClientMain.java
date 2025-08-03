@@ -2,10 +2,7 @@ package FrostHexChatUtils;
 
 import FrostHexChatUtils.config.ModConfigFile;
 import FrostHexChatUtils.config.ModConfigScreen;
-import FrostHexChatUtils.features.EntryMessages;
-import FrostHexChatUtils.features.FriendCommand;
-import FrostHexChatUtils.features.FrostHexMessages;
-import FrostHexChatUtils.features.VoteRaceMessages;
+import FrostHexChatUtils.features.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
@@ -51,11 +48,17 @@ public class ClientMain implements ClientModInitializer {
             // Checks if mod is enabled and client is on FrostHex
             if(AutoConfig.getConfigHolder(ModConfigScreen.class).getConfig().enableMod && ip.get().contains("frosthex")){
                 Matcher checkBlankMessage = Pattern.compile("[a-zA-Z0-9]").matcher(rawMessage);
+
+                // Player messages and questions
+                if(Config.frostHexHelpMessages) {HelpMessage.Check(rawMessage);}
                 if(rawMessage.contains("»")){return true;}
+
+                // Server Messages
                 if(!checkBlankMessage.find()){return false;}
                 if(Config.entryMessages && EntryMessages.Check(rawMessage)) {return false;}
                 if(Config.voteRaceMessages && VoteRaceMessages.Check(rawMessage)) {return false;}
                 if(Config.frostHexMessages && FrostHexMessages.Check(rawMessage)) {return false;}
+
                 return true;
 
             }

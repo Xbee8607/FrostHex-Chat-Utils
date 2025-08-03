@@ -4,11 +4,21 @@
   "text.autoconfig.frosthexchatutils.option.enableMod": "Enable Mod",
 
   "text.autoconfig.frosthexchatutils.option.entryMessages": "Join Messages",
-  "text.autoconfig.frosthexchatutils.option.entryMessages.@Tooltip": "Enables join messages",
+  "text.autoconfig.frosthexchatutils.option.entryMessages.@Tooltip": "Shrinks join messages",
 
   "text.autoconfig.frosthexchatutils.option.voteRaceMessages": "VoteRace Messages!",
   "text.autoconfig.frosthexchatutils.option.voteRaceMessages.@Tooltip": "Changes VoteRace text",
 
-  "text.autoconfig.frosthexchatutils.option.frostHexMessages": "FrostHex messages",
-  "text.autoconfig.frosthexchatutils.option.frostHexMessages.@Tooltip": "Changes FrostHex test"
+  "text.autoconfig.frosthexchatutils.option.frostHexMessages": "FrostHexUtils messages",
+  "text.autoconfig.frosthexchatutils.option.frostHexMessages.@Tooltip": "Changes FrostHexUtils text",
+
+
+  "text.autoconfid.frosthexchatutils.option.extraSettings": "Settings for help messages!",
+
+  "text.autoconfig.frosthexchatutils.option.extraSettings.voteRaceHelp": "VoteRace help",
+  "text.autoconfig.frosthexchatutils.option.extraSettings.voteRaceHelp.@Tooltip": "Sends messages with how to vote a race",
+  "text.autoconfig.frosthexchatutils.option.extraSettings.raceJoinHelp": "Race join help",
+  "text.autoconfig.frosthexchatutils.option.extraSettings.racejoinHelp.@Tooltip": "Sends messages with how to join a race",
+  "text.autoconfig.frosthexchatutils.option.extraSettings.trackTimeHelp": "Track times help",
+  "text.autoconfig.frosthexchatutils.option.extraSettings.trackTimeHelp.@Tooltip": "Sends messages with how to view track times"
 }

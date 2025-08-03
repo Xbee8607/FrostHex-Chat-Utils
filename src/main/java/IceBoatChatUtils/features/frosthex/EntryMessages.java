@@ -7,8 +7,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +33,6 @@ public class EntryMessages {
         return false;
     }
     private static void JoinMessage(String sign, String @NotNull [] playerName, int colour){
-
         if(ModConfigFile.friendList.contains(playerName[1].toLowerCase())){
             SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
         }
@@ -44,6 +41,5 @@ public class EntryMessages {
                 .append(Text.literal("] ").formatted(Formatting.DARK_GRAY))
                 .append(Text.literal(playerName[1]).formatted(Formatting.YELLOW));
         MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
-        return;
     }
 }

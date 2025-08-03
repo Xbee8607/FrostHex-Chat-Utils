@@ -10,53 +10,64 @@ import java.util.Objects;
 
 public class HelpMessage {
     private static final ModConfigScreen Config = AutoConfig.getConfigHolder(ModConfigScreen.class).getConfig();
+    private static final MinecraftClient client = MinecraftClient.getInstance();
 
     // Put all responses in lowercase //
     private static final String[] voteRaceMessageHelpList = {"start a race"};
     private static final String[] raceJoinHelpList = {"join a race", "join race"};
     private static final String[] trackTimeHelpList = {"track times"};
-    private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat"};
+    private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat", "spawn boat"};
     private static final String[] raceLeaveHelpList = {"leave race", "leave the race"};
 
-    /// Reformat so that for loop does not repeat if config is disabled ///
     public static void Check (String rawMessage){
         rawMessage = rawMessage.toLowerCase();
         if(rawMessage.contains("how")){
-            for(String s : voteRaceMessageHelpList){
-                if(Config.frosthexsettings.chathelpsettings.voteRaceHelp && rawMessage.contains(s)){
-                    Objects.requireNonNull(MinecraftClient.getInstance().getNetworkHandler()).sendChatMessage(
-                            "./voterace (track) (laps) (pits)");
-                    return;
+            if(Config.frosthexsettings.chathelpsettings.voteRaceHelp){
+                for(String s : voteRaceMessageHelpList){
+                    if(rawMessage.contains(s)){
+                        Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
+                                "./voterace (track) (laps) (pits)");
+                        return;
+                    }
                 }
             }
-            for(String s : raceJoinHelpList){
-                if(Config.frosthexsettings.chathelpsettings.raceJoinHelp && rawMessage.contains(s)){
-                    Objects.requireNonNull(MinecraftClient.getInstance().getNetworkHandler()).sendChatMessage(
-                            "./race join");
-                    return;
+            if(Config.frosthexsettings.chathelpsettings.raceJoinHelp){
+                for(String s : raceJoinHelpList){
+                    if(rawMessage.contains(s)){
+                        Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
+                                "./race join");
+                        return;
+                    }
                 }
             }
-            for(String s: trackTimeHelpList){
-                if(Config.frosthexsettings.chathelpsettings.trackTimeHelp && rawMessage.contains(s)){
-                    Objects.requireNonNull(MinecraftClient.getInstance().getNetworkHandler()).sendChatMessage(
-                            "./t times (track)");
-                    return;
+            if(Config.frosthexsettings.chathelpsettings.trackTimeHelp){
+                for(String s: trackTimeHelpList){
+                    if(rawMessage.contains(s)){
+                        Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
+                                "./t times (track)");
+                        return;
+                    }
                 }
             }
-            for(String s: spawnBoatHelpList){
-                if(Config.frosthexsettings.chathelpsettings.spawnBoatHelp && rawMessage.contains(s)){
-                    Objects.requireNonNull(MinecraftClient.getInstance().getNetworkHandler()).sendChatMessage(
-                            "./boat");
-                    return;
+            if(Config.frosthexsettings.chathelpsettings.spawnBoatHelp){
+                for(String s: spawnBoatHelpList){
+                    if(rawMessage.contains(s)){
+                        Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
+                                "./boat");
+                        return;
+                    }
                 }
             }
-            for(String s: raceLeaveHelpList){
-                if(Config.frosthexsettings.chathelpsettings.raceLeaveHelp  && rawMessage.contains(s)){
-                    Objects.requireNonNull(MinecraftClient.getInstance().getNetworkHandler()).sendChatMessage(
-                            "./race leave");
-                    return;
+            if(Config.frosthexsettings.chathelpsettings.raceLeaveHelp){
+                for(String s: raceLeaveHelpList){
+                    if(rawMessage.contains(s)){
+                        Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
+                                "./race leave");
+                        return;
+                    }
                 }
             }
+
         }
     }
 }

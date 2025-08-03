@@ -54,7 +54,7 @@ public class FriendCommand {
                                             .suggests(PLAYER_SUGGESTIONS_ONLINE)
                                             .executes(context -> {
                                                 if(new ModConfigScreen().frosthexsettings.enableFrostHex){
-                                                    String playerName = StringArgumentType.getString(context, "player");
+                                                    String playerName = StringArgumentType.getString(context, "player").toLowerCase();
                                                     if(!ModConfigFile.friendList.contains(playerName)){
                                                         ModConfigFile.friendList.add(playerName);
                                                         ModConfigFile.save();

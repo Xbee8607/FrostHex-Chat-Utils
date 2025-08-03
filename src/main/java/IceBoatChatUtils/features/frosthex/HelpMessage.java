@@ -10,13 +10,15 @@ import java.util.Objects;
 
 public class HelpMessage {
     private static final ModConfigScreen Config = AutoConfig.getConfigHolder(ModConfigScreen.class).getConfig();
+
+    // Put all responses in lowercase //
     private static final String[] voteRaceMessageHelpList = {"start a race"};
     private static final String[] raceJoinHelpList = {"join a race", "join race"};
     private static final String[] trackTimeHelpList = {"track times"};
     private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat"};
     private static final String[] raceLeaveHelpList = {"leave race", "leave the race"};
 
-
+    /// Reformat so that for loop does not repeat if config is disabled ///
     public static void Check (String rawMessage){
         rawMessage = rawMessage.toLowerCase();
         if(rawMessage.contains("how")){

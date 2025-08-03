@@ -35,13 +35,9 @@ public class EntryMessages {
         return false;
     }
     private static void JoinMessage(String sign, String @NotNull [] playerName, int colour){
-        for(String friendName: ModConfigFile.friendList){
-            if(ModConfigFile.friendList.contains(friendName) && Objects.equals(sign, "+")) {
-                SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
-            }
-            if(ModConfigFile.friendList.contains(friendName) && Objects.equals(sign, "-")){
-                SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
-            }
+
+        if(ModConfigFile.friendList.contains(playerName[1].toLowerCase())){
+            SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
         }
         Text textMessage = Text.literal("[").formatted(Formatting.DARK_GRAY)
                 .append(Text.literal(sign).setStyle(Style.EMPTY.withColor(colour)))

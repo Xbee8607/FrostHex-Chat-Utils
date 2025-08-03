@@ -1,4 +1,4 @@
-package FrostHexChatUtils.config;
+package IceBoatChatUtils.config;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ModConfigFile {
     public static final List<String> friendList = new ArrayList<>();
-    private static final Path FRIENDS_FILE = Path.of("config/fhcuconfig.json");
+    private static final Path FRIENDS_FILE = Path.of("config/ibcuconfig.json");
     private static final Gson GSON = new Gson();
 
     public static void load() {

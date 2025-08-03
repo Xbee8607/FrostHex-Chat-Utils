@@ -1,0 +1,27 @@
+{
+  "text.autoconfig.iceboatchatutils.title": "Ice Boat Racing Chat Utils",
+  "text.autoconfig.iceboatchatutils.category.FrostHex": "FrostHex Settings",
+  "text.autoconfig.iceboatchatutils.category.BoatLabs": "BoatLabs Settings",
+
+
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings": "Settings for FrostHex!",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.enableFrostHex": "Enables Mod for FrostHex server",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.entryMessages": "Join Messages",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.entryMessages.@Tooltip": "Shrinks join messages",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.voteRaceMessages": "VoteRace Messages",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.voteRaceMessages.@Tooltip": "Changes VoteRace text",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.frostHexMessages": "FrostHexUtils messages",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.frostHexMessages.@Tooltip": "Changes FrostHexUtils text",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.frostHexHelpMessages": "Enable messages to help other players!",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings": "Settings for help messages!",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.voteRaceHelp": "VoteRace help",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.voteRaceHelp.@Tooltip": "Sends message about how to vote a race",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.raceJoinHelp": "Race join help",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.raceJoinHelp.@Tooltip": "Sends message about how to join a race",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.raceLeaveHelp": "Race leave help",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.raceLeaveHelp.@Tooltip": "Sends message about how to leave a race",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.trackTimeHelp": "Track times help",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.trackTimeHelp.@Tooltip": "Sends message about how to view track times",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.spawnBoatHelp": "Spawn boat help",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.spawnBoatHelp.@Tooltip": "Sends message about how to spawn a boat"
+}

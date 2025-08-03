@@ -1,4 +1,4 @@
-package FrostHexChatUtils.features;
+package IceBoatChatUtils.features.frosthex;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;

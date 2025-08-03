@@ -1,11 +1,14 @@
-package FrostHexChatUtils.features;
+package IceBoatChatUtils.features.frosthex;
 
+import IceBoatChatUtils.config.ModConfigFile;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,10 +35,19 @@ public class EntryMessages {
         return false;
     }
     private static void JoinMessage(String sign, String @NotNull [] playerName, int colour){
+        for(String friendName: ModConfigFile.friendList){
+            if(ModConfigFile.friendList.contains(friendName) && Objects.equals(sign, "+")) {
+                SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
+            }
+            if(ModConfigFile.friendList.contains(friendName) && Objects.equals(sign, "-")){
+                SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
+            }
+        }
         Text textMessage = Text.literal("[").formatted(Formatting.DARK_GRAY)
                 .append(Text.literal(sign).setStyle(Style.EMPTY.withColor(colour)))
                 .append(Text.literal("] ").formatted(Formatting.DARK_GRAY))
                 .append(Text.literal(playerName[1]).formatted(Formatting.YELLOW));
         MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(textMessage);
+        return;
     }
 }

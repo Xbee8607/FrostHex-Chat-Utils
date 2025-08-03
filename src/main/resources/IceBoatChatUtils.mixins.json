@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "FrostHexChatUtils.mixin",
+	"package": "IceBoatChatUtils.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"Mixin"

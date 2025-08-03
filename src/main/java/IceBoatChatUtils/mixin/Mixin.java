@@ -1,4 +1,4 @@
-package FrostHexChatUtils.mixin;
+package IceBoatChatUtils.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.MinecraftServer;

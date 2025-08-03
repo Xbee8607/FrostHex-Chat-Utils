@@ -1,7 +1,7 @@
-package FrostHexChatUtils.features;
+package IceBoatChatUtils.features.frosthex;
 
-import FrostHexChatUtils.config.ModConfigFile;
-import FrostHexChatUtils.config.ModConfigScreen;
+import IceBoatChatUtils.config.ModConfigFile;
+import IceBoatChatUtils.config.ModConfigScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
@@ -32,7 +32,7 @@ public class FriendCommand {
 
     public static void FriendCommands(CommandDispatcher<FabricClientCommandSource> dispatcher) {
         assert client.player != null;
-        List<String> ChatUtils = List.of("cu", "FHCU", "FrostHexChatUtils");
+        List<String> ChatUtils = List.of("cu", "IBCU", "IceBoatChatUtils");
 
         for (String cc : ChatUtils) {
             dispatcher.register(literal(cc)
@@ -53,8 +53,8 @@ public class FriendCommand {
                                     .then(argument("player", StringArgumentType.word())
                                             .suggests(PLAYER_SUGGESTIONS_ONLINE)
                                             .executes(context -> {
-                                                if(new ModConfigScreen().enableMod)
-                                                {String playerName = StringArgumentType.getString(context, "player");
+                                                if(new ModConfigScreen().frosthexsettings.enableFrostHex){
+                                                    String playerName = StringArgumentType.getString(context, "player");
                                                     if(!ModConfigFile.friendList.contains(playerName)){
                                                         ModConfigFile.friendList.add(playerName);
                                                         ModConfigFile.save();
@@ -68,6 +68,11 @@ public class FriendCommand {
                                                         client.inGameHud.getChatHud().addMessage(Message);
                                                     }
                                                 }
+                                                else{
+                                                    Text textMessage = FrostHexChatUtilsName.copy()
+                                                            .append(Text.literal("Mod not Enabled!"));
+                                                    client.inGameHud.getChatHud().addMessage(textMessage);
+                                                }
                                                 return 1;
                                             })))
                             .then(literal("remove")
@@ -78,7 +83,7 @@ public class FriendCommand {
                                     .then(argument("player", StringArgumentType.word())
                                             .suggests(PLAYER_SUGGESTIONS_ONLINE)
                                             .executes(context -> {
-                                                if(new ModConfigScreen().enableMod){
+                                                if(new ModConfigScreen().frosthexsettings.enableFrostHex){
                                                     String playerName = StringArgumentType.getString(context, "player");
                                                     if(ModConfigFile.friendList.contains(playerName)){
                                                         ModConfigFile.friendList.remove(playerName);
@@ -93,11 +98,16 @@ public class FriendCommand {
                                                         client.inGameHud.getChatHud().addMessage(Message);
                                                     }
                                                 }
+                                                else{
+                                                    Text textMessage = FrostHexChatUtilsName.copy()
+                                                            .append(Text.literal("Mod not Enabled!"));
+                                                    client.inGameHud.getChatHud().addMessage(textMessage);
+                                                }
                                                 return 1;
                                             })))
                             .then(literal("list")
                                     .executes(context -> {
-                                        if(new ModConfigScreen().enableMod){
+                                        if(new ModConfigScreen().frosthexsettings.enableFrostHex){
                                             if(ModConfigFile.friendList.isEmpty()){
                                                 client.player.sendMessage(FrostHexChatUtilsName.copy()
                                                         .append(Text.literal("Friend list is empty :(").formatted(Formatting.GRAY)));
@@ -109,6 +119,11 @@ public class FriendCommand {
                                                 }
                                                 client.player.sendMessage(message);
                                             }
+                                        }
+                                        else{
+                                            Text textMessage = FrostHexChatUtilsName.copy()
+                                                    .append(Text.literal("Mod not Enabled!"));
+                                            client.inGameHud.getChatHud().addMessage(textMessage);
                                         }
                                         return 1;
                                     })))

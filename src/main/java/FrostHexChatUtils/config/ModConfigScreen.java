@@ -34,6 +34,9 @@ public class ModConfigScreen implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip()
         public boolean trackTimeHelp = false;
+
+        @ConfigEntry.Gui.Tooltip()
+        public boolean spawnBoatHelp = false;
     }
 
 }

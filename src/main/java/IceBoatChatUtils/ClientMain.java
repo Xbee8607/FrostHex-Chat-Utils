@@ -5,6 +5,7 @@ import IceBoatChatUtils.config.ModConfigScreen;
 import IceBoatChatUtils.features.frosthex.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 
 import me.shedaniel.autoconfig.AutoConfig;
@@ -17,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClientMain implements ClientModInitializer {
+    private static final MinecraftClient client = MinecraftClient.getInstance();
     @Override
     public void onInitializeClient() {
         // Sets up Mod config //
@@ -27,12 +29,13 @@ public class ClientMain implements ClientModInitializer {
         AtomicReference<String> ip = new AtomicReference<>("");
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
             ModConfigFile.load();
-            if(MinecraftClient.getInstance() == null || MinecraftClient.getInstance().getCurrentServerEntry() == null) {return;}
-            ip.set(MinecraftClient.getInstance().getCurrentServerEntry().address);
+            if(client == null || client.getCurrentServerEntry() == null) {return;}
+            ip.set(client.getCurrentServerEntry().address);
         });
 
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
             ModConfigFile.save();
+            ip.set(null);
         });
 
         // Friend Command //
@@ -40,13 +43,20 @@ public class ClientMain implements ClientModInitializer {
             FriendCommand.FriendCommands(dispatcher);
         });
 
+
+        // Run Per Tick //
+        ClientTickEvents.START_CLIENT_TICK.register(client -> {
+            AutoJoin.Timer();
+        });
+
+        // Get Chat Messages //
         ClientReceiveMessageEvents.ALLOW_GAME.register((message, sender) -> {
             String rawMessage = message.getString();
 
-            if(MinecraftClient.getInstance() == null || MinecraftClient.getInstance().getCurrentServerEntry() == null) {return false;}
+            if(client == null || client.getCurrentServerEntry() == null) {return false;}
 
             // Checks if mod is enabled and client is on FrostHex
-            if(AutoConfig.getConfigHolder(ModConfigScreen.class).getConfig().frosthexsettings.enableFrostHex && ip.get().contains("frosthex")){
+            if(Config.frosthexsettings.enableFrostHex && ip.get().contains("frosthex")){
                 Matcher checkBlankMessage = Pattern.compile("[a-zA-Z0-9]").matcher(rawMessage);
 
                 // Player messages and questions
@@ -59,6 +69,7 @@ public class ClientMain implements ClientModInitializer {
                 if(Config.frosthexsettings.entryMessages && EntryMessages.Check(rawMessage)) {return false;}
                 if(Config.frosthexsettings.voteRaceMessages && VoteRaceMessages.Check(rawMessage)) {return false;}
                 if(Config.frosthexsettings.frostHexMessages && FrostHexMessages.Check(rawMessage)) {return false;}
+                if(Config.frosthexsettings.autojoinsettings.autoJoin){AutoJoin.Check(rawMessage);}
 
                 return true;
 

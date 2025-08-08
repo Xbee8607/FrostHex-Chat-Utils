@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
 	"id": "frosthex-chat-utils-test",
-	"version": "0.4.2",
+	"version": "0.6.4",
 	"name": "Test",
-	"description": "Cleans up FrostHex chat",
+	"description": "Cleans up Ice chat",
 	"authors": [
 		"Xbee8607!"
 	],

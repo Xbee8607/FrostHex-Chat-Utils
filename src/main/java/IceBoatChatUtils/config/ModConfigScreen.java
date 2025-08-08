@@ -24,10 +24,21 @@ public class ModConfigScreen implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public boolean frostHexMessages = true;
 
+        @ConfigEntry.Gui.CollapsibleObject
+        public AutoJoinCollapsible autojoinsettings = new AutoJoinCollapsible();
+
         public boolean frostHexHelpMessages = false;
 
         @ConfigEntry.Gui.CollapsibleObject
         public ChatHelpCollapsible chathelpsettings = new ChatHelpCollapsible();
+    }
+    public static class AutoJoinCollapsible {
+        @ConfigEntry.Gui.Tooltip
+        public boolean autoJoin = false;
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 39)
+        @ConfigEntry.Gui.Tooltip
+        public int autoJoinTime = 20;
     }
 
     public static class ChatHelpCollapsible {

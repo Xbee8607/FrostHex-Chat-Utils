@@ -14,7 +14,10 @@ public class AutoJoin {
     public static void Check(String rawMessage){
         if(rawMessage.contains("--> Click to join a race")){
             timerCount = 0;
-            chatMessageTime = Config.frosthexsettings.autojoinsettings.autoJoinTime * 20 + 1;
+            if(Config.frosthexsettings.autojoinsettings.autoJoinTime == 0){
+                runCommand("race join");
+            }
+            chatMessageTime = Config.frosthexsettings.autojoinsettings.autoJoinTime * 20;
         }
     }
 

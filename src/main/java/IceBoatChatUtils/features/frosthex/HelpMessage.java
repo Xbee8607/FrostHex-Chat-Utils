@@ -13,10 +13,10 @@ public class HelpMessage {
     private static final MinecraftClient client = MinecraftClient.getInstance();
 
     // Put all responses in lowercase //
-    private static final String[] voteRaceMessageHelpList = {"start a race"};
+    private static final String[] voteRaceMessageHelpList = {"start a race", "make a race", "start race"};
     private static final String[] raceJoinHelpList = {"join a race", "join race"};
-    private static final String[] trackTimeHelpList = {"track times"};
-    private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat", "spawn boat"};
+    private static final String[] trackTimeHelpList = {"track times", "see times"};
+    private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat", "spawn boat", "boat back"};
     private static final String[] raceLeaveHelpList = {"leave race", "leave the race"};
 
     public static void Check (String rawMessage){
@@ -26,7 +26,7 @@ public class HelpMessage {
                 for(String s : voteRaceMessageHelpList){
                     if(rawMessage.contains(s)){
                         Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
-                                "./voterace (track) (laps) (pits)");
+                                "/voterace (track) (laps) (pits)");
                         return;
                     }
                 }
@@ -35,7 +35,7 @@ public class HelpMessage {
                 for(String s : raceJoinHelpList){
                     if(rawMessage.contains(s)){
                         Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
-                                "./race join");
+                                "/race join");
                         return;
                     }
                 }
@@ -44,7 +44,7 @@ public class HelpMessage {
                 for(String s: trackTimeHelpList){
                     if(rawMessage.contains(s)){
                         Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
-                                "./t times (track)");
+                                "/t times (track)");
                         return;
                     }
                 }
@@ -53,7 +53,7 @@ public class HelpMessage {
                 for(String s: spawnBoatHelpList){
                     if(rawMessage.contains(s)){
                         Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
-                                "./boat");
+                                "/boat");
                         return;
                     }
                 }
@@ -62,7 +62,7 @@ public class HelpMessage {
                 for(String s: raceLeaveHelpList){
                     if(rawMessage.contains(s)){
                         Objects.requireNonNull(client.getNetworkHandler()).sendChatMessage(
-                                "./race leave");
+                                "/race leave");
                         return;
                     }
                 }

@@ -27,7 +27,7 @@ public class ModConfigScreen implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject
         public AutoJoinCollapsible autojoinsettings = new AutoJoinCollapsible();
 
-        public boolean frostHexHelpMessages = false;
+
 
         @ConfigEntry.Gui.CollapsibleObject
         public ChatHelpCollapsible chathelpsettings = new ChatHelpCollapsible();
@@ -42,6 +42,9 @@ public class ModConfigScreen implements ConfigData {
     }
 
     public static class ChatHelpCollapsible {
+        @ConfigEntry.Gui.Tooltip
+        public boolean frostHexHelpMessages = false;
+
         @ConfigEntry.Gui.Tooltip
         public boolean voteRaceHelp = false;
 

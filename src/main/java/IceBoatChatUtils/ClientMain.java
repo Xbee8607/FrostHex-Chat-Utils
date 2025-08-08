@@ -60,7 +60,7 @@ public class ClientMain implements ClientModInitializer {
                 Matcher checkBlankMessage = Pattern.compile("[a-zA-Z0-9]").matcher(rawMessage);
 
                 // Player messages and questions
-                if(Config.frosthexsettings.frostHexHelpMessages) {
+                if(Config.frosthexsettings.chathelpsettings.frostHexHelpMessages) {
                     HelpMessage.Check(rawMessage);}
                 if(rawMessage.contains("»")){return true;}
 

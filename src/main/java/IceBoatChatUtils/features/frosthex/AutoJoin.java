@@ -23,7 +23,7 @@ public class AutoJoin {
 
     public static void Timer(){
         timerCount++;
-        if(timerCount == chatMessageTime){
+        if(timerCount == chatMessageTime && Config.frosthexsettings.autojoinsettings.autoJoin){
             chatMessageTime = 0;
             runCommand("race join");
         }

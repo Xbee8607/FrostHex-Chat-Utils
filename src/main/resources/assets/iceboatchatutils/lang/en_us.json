@@ -22,7 +22,7 @@
 
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings": "Settings for help messages! (WIP)",
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.frostHexHelpMessages": "Help messages!",
-  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.frostHexHelpMessages.@tooltip": "Enables messages to help other players!",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.frostHexHelpMessages.@Tooltip": "Enables messages to help other players!",
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.voteRaceHelp": "VoteRace help",
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.voteRaceHelp.@Tooltip": "Sends message about how to vote a race",
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings.raceJoinHelp": "Race join help",

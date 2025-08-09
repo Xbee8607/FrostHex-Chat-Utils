@@ -36,7 +36,7 @@ public class ModConfigScreen implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public boolean autoJoin = false;
 
-        @ConfigEntry.BoundedDiscrete(min = 0, max = 39)
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 38)
         @ConfigEntry.Gui.Tooltip
         public int autoJoinTime = 20;
     }

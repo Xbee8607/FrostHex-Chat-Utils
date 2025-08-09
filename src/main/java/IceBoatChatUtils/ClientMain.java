@@ -60,8 +60,7 @@ public class ClientMain implements ClientModInitializer {
                 Matcher checkBlankMessage = Pattern.compile("[a-zA-Z0-9]").matcher(rawMessage);
 
                 // Player messages and questions
-                if(Config.frosthexsettings.chathelpsettings.frostHexHelpMessages) {
-                    HelpMessage.Check(rawMessage);}
+                if(Config.frosthexsettings.chathelpsettings.frostHexHelpMessages) {HelpMessage.Check(rawMessage);}
                 if(rawMessage.contains("»")){return true;}
 
                 // Server Messages
@@ -69,9 +68,7 @@ public class ClientMain implements ClientModInitializer {
                 if(Config.frosthexsettings.entryMessages && EntryMessages.Check(rawMessage)) {return false;}
                 if(Config.frosthexsettings.voteRaceMessages && VoteRaceMessages.Check(rawMessage)) {return false;}
                 if(Config.frosthexsettings.frostHexMessages && FrostHexMessages.Check(rawMessage)) {return false;}
-                if(Config.frosthexsettings.autojoinsettings.autoJoin){AutoJoin.Check(rawMessage);}
-
-                return true;
+                AutoJoin.Check(rawMessage);
 
             }
             return true;

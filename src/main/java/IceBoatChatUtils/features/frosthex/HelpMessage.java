@@ -14,7 +14,7 @@ public class HelpMessage {
 
     // Put all responses in lowercase //
     private static final String[] voteRaceMessageHelpList = {"start a race", "make a race", "start race"};
-    private static final String[] raceJoinHelpList = {"join a race", "join race"};
+    private static final String[] raceJoinHelpList = {"join a race", "join race", "join the race"};
     private static final String[] trackTimeHelpList = {"track times", "see times"};
     private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat", "spawn boat", "boat back"};
     private static final String[] raceLeaveHelpList = {"leave race", "leave the race"};

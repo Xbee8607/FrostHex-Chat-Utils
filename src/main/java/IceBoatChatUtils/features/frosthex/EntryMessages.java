@@ -34,6 +34,7 @@ public class EntryMessages {
     }
     private static void JoinMessage(String sign, String @NotNull [] playerName, int colour){
         if(ModConfigFile.friendList.contains(playerName[1].toLowerCase())){
+            MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal("Friend Joined!"));
             SoundEvents.BLOCK_NOTE_BLOCK_PLING.value();
         }
         Text textMessage = Text.literal("[").formatted(Formatting.DARK_GRAY)

@@ -5,6 +5,7 @@ import IceBoatChatUtils.config.ModConfigScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -19,6 +20,7 @@ import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.arg
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public class FriendCommand {
+    static ModConfigScreen Config = AutoConfig.getConfigHolder(ModConfigScreen.class).getConfig();
     private static final MinecraftClient client = MinecraftClient.getInstance();
     private static final Text FrostHexChatUtilsName;
     static {
@@ -40,6 +42,13 @@ public class FriendCommand {
                         client.player.sendMessage(Text.literal("Missing Args").formatted(Formatting.RED));
                         return 1;
                     })
+
+                    .then(literal("autoJoin"))
+                    .executes(context -> {
+                        Config.frosthexsettings.autojoinsettings.autoJoin = !Config.frosthexsettings.autojoinsettings.autoJoin;
+                        return 1;
+                    })
+                    
                     .then(literal("friend")
                             .executes(context -> {
                                 client.player.sendMessage(Text.literal("Missing Args").formatted(Formatting.RED));

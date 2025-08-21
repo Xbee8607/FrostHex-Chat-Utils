@@ -40,7 +40,7 @@ public class ClientMain implements ClientModInitializer {
 
         // Friend Command //
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            FriendCommand.FriendCommands(dispatcher);
+            Commands.Load(dispatcher);
         });
 
 

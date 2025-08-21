@@ -15,7 +15,7 @@ public class VoteRaceMessages{
                 SendMessage(Message);
                 return true;
 
-            }catch(Exception ArrayIndexOutOfBoundsException){
+            }catch(Exception e){
                return false;
             }
         }

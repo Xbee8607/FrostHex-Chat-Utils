@@ -18,6 +18,8 @@
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.autojoinsettings.autoJoin.@Tooltip": "Automatically joins races!",
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.autojoinsettings.autoJoinTime": "Amount of time",
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.autojoinsettings.autoJoinTime.@Tooltip": "The amount of time (s) until you join the race!",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.autojoinsettings.instantJoinTrack": "Instant race joins",
+  "text.autoconfig.iceboatchatutils.option.frosthexsettings.autojoinsettings.instantJoinTrack.@Tooltip": "Instantly joins races if the track is in the instant track list",
 
 
   "text.autoconfig.iceboatchatutils.option.frosthexsettings.chathelpsettings": "Settings for help messages! (WIP)",

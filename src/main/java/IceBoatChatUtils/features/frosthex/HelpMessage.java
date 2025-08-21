@@ -13,9 +13,9 @@ public class HelpMessage {
     private static final MinecraftClient client = MinecraftClient.getInstance();
 
     // Put all responses in lowercase //
-    private static final String[] voteRaceMessageHelpList = {"start a race", "make a race", "start race"};
+    private static final String[] voteRaceMessageHelpList = {"start a race", "make a race", "start race", "start the race"};
     private static final String[] raceJoinHelpList = {"join a race", "join race", "join the race"};
-    private static final String[] trackTimeHelpList = {"track times", "see times"};
+    private static final String[] trackTimeHelpList = {"track times", "see times", "leaderboard times", "see leaderboard"};
     private static final String[] spawnBoatHelpList = {"spawn a boat", "summon a boat", "spawn boat", "boat back"};
     private static final String[] raceLeaveHelpList = {"leave race", "leave the race"};
 

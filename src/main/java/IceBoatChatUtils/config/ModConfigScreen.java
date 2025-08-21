@@ -39,6 +39,11 @@ public class ModConfigScreen implements ConfigData {
         @ConfigEntry.BoundedDiscrete(min = 0, max = 38)
         @ConfigEntry.Gui.Tooltip
         public int autoJoinTime = 20;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean instantJoinTrack = false;
+
+        ///  Make a setting for a boolean instant track ///
     }
 
     public static class ChatHelpCollapsible {
